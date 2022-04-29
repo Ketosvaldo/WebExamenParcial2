@@ -84,7 +84,7 @@ class Timer extends Component{
     }
 
     displayTimer(seconds){
-
+        
     }
 
     render(){
