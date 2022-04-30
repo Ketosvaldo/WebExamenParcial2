@@ -3,14 +3,22 @@ import './Timer.css';
 
 class Timer extends Component{
     constructor(){
-        super()
+        super();
         this.state = {
             time: 0,
+            min: 0,
+            sec: 0,
             alert: {
                 type: "",
                 message: ""
             }
-        }
+        };
+
+        this.times = {
+            defaultTime: 1500,
+            shortBreak: 300,
+            longBreak: 900,
+        };
     }
 
     componentDidMount(){
@@ -43,7 +51,7 @@ class Timer extends Component{
             }
         })
 
-        this.setTime(this.times.defaultTime);
+        this.setTime(this.times.shortBreak);
     }
 
     setTimeForLongBreak = () => {
@@ -53,11 +61,12 @@ class Timer extends Component{
                 message: 'Taking a Long Break'
             }
         })
+        this.setTime(this.times.longBreak);
     }
 
     setTime = (newTime) => {
         this.restartInterval();
-        this.setTime({
+        this.setState({
             time: newTime,
         })
     }
@@ -84,7 +93,9 @@ class Timer extends Component{
     }
 
     displayTimer(seconds){
-        
+        return(
+            <p>{parseInt(seconds / 60)}:{seconds %= 60}</p>
+        );
     }
 
     render(){
@@ -97,7 +108,7 @@ class Timer extends Component{
                 </div>
 
                 <div className ="timer">
-                    {this.displayTimer(time)}
+                    {this.displayTimer(this.state.time)}
                 </div>
 
                 <div className = "types">

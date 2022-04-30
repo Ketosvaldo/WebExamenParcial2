@@ -11,7 +11,6 @@ function App() {
       <Content>
         <Timer />
       </Content>
-
       <Footer/> 
     </div>
   );
