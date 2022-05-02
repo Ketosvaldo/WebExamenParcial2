@@ -1,0 +1,38 @@
+.Cripto{
+    border: 10px solid green;
+}
+.Cripto .title{
+    font-size: 60px;
+    font-weight: bold;
+    background-color: black;
+    color: yellow;
+    text-align: center;
+    padding: 10px;
+}
+.Cripto .instructions{
+    padding: 10px;
+    font-size: 30px;
+}
+
+.Cripto input{
+    font-size: 20px;
+    text-align: center;
+}
+.Cripto button{
+    font-size: 20px;
+    background-color: green;
+}
+
+.Cripto .alert{
+    color:red;
+    font-size: 40px;
+    font-weight: bold;
+}
+.Cripto .result{
+    font-size: 20px;
+    font-weight: bold;
+}
+.Cripto .puto{
+    padding: 10px;
+    width: 180px;
+}

@@ -93,9 +93,9 @@ class Timer extends Component{
     }
 
     displayTimer(seconds){
-        return(
-            <p>{parseInt(seconds / 60)}:{seconds %= 60}</p>
-        );
+        const m = Math.floor(seconds/60);
+        const s = seconds %= 60; 
+        return `${m < 10 ? '0' : ''}${m}:${s < 10 ? '0' : ''}${s}`;
     }
 
     render(){
