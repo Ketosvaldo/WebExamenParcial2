@@ -5,54 +5,43 @@ class Cripto extends Component{
     constructor(){
         super();
         this.state = {
-            crypt: 0,
             money: 0,
-            message: "",
         }
     }
     handleOnChange = e => {
-        const {target: {value}} = e;
         this.setState({
-            money: value,
-            message: "",
-        });
+            money:Number(e.target.value)
+        })
     }
-    handleOnClick = () =>{
-        const m = parseInt(this.state.money);
-        if(m % 10 === 0){
-            this.setState({
-                crypt: m/10,
-            });
+    shouldComponentUpdate(props, state){
+        if(state.money % 10 === 0){
+            return true
         }
-        else{
-            this.setState({
-                message: "Inserte solo múltiplos de 10",
-            });
-        }
+        return false
     }
     render(){
         return(
             <div className="Cripto">
-                <div className="title">
-                    Compra Crypto Coins
-                </div>
+                <h1>Compra Crypto Coins</h1>
                 <div className ="instructions">
-                    Dólares a invertir
+                    <p>¿Cuántos dólares tienes?</p>
+                    <img src="https://c.tenor.com/AQecc2g8uuAAAAAC/duck-dance.gif"></img>
+                    <p>
+                        <input 
+                            type="number" 
+                            onChange={this.handleOnChange} 
+                            placeholder='0'/>
+                    </p>
                 </div>
-                <img src="https://c.tenor.com/AQecc2g8uuAAAAAC/duck-dance.gif" className="puto"></img>
-                <div className="input">
-                    <input type="number" onChange={this.handleOnChange} value={this.state.money}/>
-                    <button onClick={this.handleOnClick}>Subir</button>
-                </div>
-                <div className="instructions">
-                    Precio de Crypto Coins $10
-                </div>
-                <div className="alert">{this.state.message}</div>
-                <div className="result">
-                    Puedes comprar {this.state.crypt} monedas
+
+                <div className="answer">
+                    <p>Precio de Crypto Coins: $10</p>
+                    <p>
+                        Puedes comprar <strong>{this.state.money/10}</strong> monedas
+                    </p>
                 </div>
             </div>
-        )
+        );
     }
 }
 

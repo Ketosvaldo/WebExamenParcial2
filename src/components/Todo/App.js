@@ -3,6 +3,7 @@ import Footer from '../../shared/layout/Footer';
 import Content from '../../shared/layout/Content';
 //import Timer from '../Pomodoro/Timer';
 import Cripto from '../Cripto/Cripto';
+import Charthome from '../Chart/Charthome';
 import './App.css';
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
     <div className="App">
       <Header title="Header" url="https://www.facebook.com"/>
       <Content>
-        <Cripto />
+        <Charthome />
       </Content>
       <Footer/> 
     </div>
