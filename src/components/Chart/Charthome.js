@@ -20,7 +20,7 @@ class Charthome extends Component{
         })
     }
 
-    setlineChart= () => {
+    setLineChart= () => {
         this.setState({
             chartType: 'line'
         })

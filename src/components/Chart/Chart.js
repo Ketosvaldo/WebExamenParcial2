@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import c3 from 'c3';
-import './Char.css';
+import './Chart.css';
 
 class Chart extends Component{
     componentDidMount(){

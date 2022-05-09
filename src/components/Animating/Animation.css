@@ -1,0 +1,16 @@
+.Animation{
+    background-color: red;
+}
+
+.Animation .transition {
+    transition: all 3s ease 0s;
+    color:white;
+    padding-bottom: 10px;
+    width: 24%;
+}
+
+.Animation .transition.show {
+    padding-bottom: 200px;
+    background-color:red;
+    border-image-repeat: repeat;
+ }
