@@ -6,6 +6,7 @@ import Cripto from '../Cripto/Cripto';
 import Charthome from '../Chart/Charthome';
 import Animation from '../Animating/Animation';
 import Numbers from '../PureComponent/Numbers'
+import Calculator from '../Calculator/Calculator';
 import './App.css';
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
     <div className="App">
       <Header title="Header" url="https://www.facebook.com"/>
       <Content>
-        <Numbers/>
+        <Calculator/>
       </Content>
       <Footer/> 
     </div>

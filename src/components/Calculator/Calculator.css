@@ -1,0 +1,30 @@
+.calculator{
+    margin-top: 40px;
+}
+
+.calculator .select{
+    color: black;
+    background-color: yellow;
+    font-size: 20px;
+}
+
+.calculator .text{
+    font-size: 20px;
+    width: 50px;
+    margin: 10px;
+}
+
+.back{
+    background-image: url(https://c.tenor.com/g5ZphcWaj1MAAAAC/dancing-duck-vibing-duck.gif);
+    padding: 35px;
+}
+
+.resultado{
+    border: 2px solid black;
+    border-radius: 3px;
+}
+
+.box{
+    width: 50px;
+    padding-left: 48.7%;
+}
