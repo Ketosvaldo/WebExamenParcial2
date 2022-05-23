@@ -11,7 +11,10 @@ class Timer extends Component{
             alert: {
                 type: "",
                 message: ""
-            }
+            },
+            pause: 0,
+            running: 0,
+            classState: ""
         };
 
         this.times = {
@@ -37,7 +40,8 @@ class Timer extends Component{
             alert: {
                 type: 'work',
                 message: 'WORKING!'
-            }
+            },
+            running: 1
         })
 
         this.setTime(this.times.defaultTime);
@@ -48,7 +52,8 @@ class Timer extends Component{
             alert: {
                 type: 'shortBreak',
                 message: 'Taking a Short Break'
-            }
+            },
+            running: 1
         })
 
         this.setTime(this.times.shortBreak);
@@ -59,7 +64,8 @@ class Timer extends Component{
             alert: {
                 type: 'longBreak',
                 message: 'Taking a Long Break'
-            }
+            },
+            running: 1
         })
         this.setTime(this.times.longBreak);
     }
@@ -86,9 +92,59 @@ class Timer extends Component{
             })
         }
         else{
+            if(this.state.pause === 0){
+                this.setState({
+                    time: this.state.time -1
+                });
+            }
+            else{
+                this.setState({
+                    time: this.state.time
+                });
+            }
+        }
+    }
+
+    buttonRender(running){
+        if(running === 1){
+            return(
+            <p>
+                <button onClick={this.pauseTime}><img src ={this.state.classState} height = "80" width = "80"/></button>
+                <button onClick={this.stopTime}><img src="https://cdn1.iconfinder.com/data/icons/system-play-set-2/64/stop-512.png" height = "80" width = "80"/></button>
+            </p>
+            )
+        }
+        else{
+            return(
+                <p></p>
+            )
+        }
+    }
+
+    stopTime = () => {
+        clearInterval(this.interval);
+        this.setState({
+            running: 0,
+            alert:{
+                type: 'nothing',
+                message: '',
+            }
+        });
+        this.setDefaultTime();
+    }
+
+    pauseTime = () => {
+        if(this.state.pause === 0){
             this.setState({
-                time: this.state.time -1
-            });
+                pause: 1,
+                classState: "https://cdn-icons-png.flaticon.com/512/0/375.png"
+            })
+        }
+        else{
+            this.setState({
+                pause: 0,
+                classState: "https://cdn.onlinewebfonts.com/svg/img_78429.png"
+            })
         }
     }
 
@@ -99,7 +155,7 @@ class Timer extends Component{
     }
 
     render(){
-        const {alert: { message, type }, time } = this.state;
+        const {alert: { message, type }, time, running, pause, classState } = this.state;
 
         return(
             <div className = "Pomodoro">
@@ -132,6 +188,9 @@ class Timer extends Component{
                     >
                         Long Break
                     </button>
+                </div>
+                <div>
+                    {this.buttonRender(running)}
                 </div>
             </div>
         );

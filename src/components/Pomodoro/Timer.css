@@ -29,6 +29,18 @@
     background: #c60f13;
 }
 
+/*.Pomodoro .button.Pause{
+    background-image: url("https://cdn.onlinewebfonts.com/svg/img_78429.png");
+}
+
+.Pomodoro .button.Stop{
+    background-image: url("https://cdn1.iconfinder.com/data/icons/system-play-set-2/64/stop-512.png");
+}
+
+.Pomodoro .button.Play{
+    background-image: url("https://i.pinimg.com/736x/cf/60/8a/cf608ab5deafb9a9753a58fd40d7b12c.jpg");
+}*/
+
 .Pomodoro button{
     background: #2ba6cb;
     border: 1px solid #1e728c;

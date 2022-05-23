@@ -10,95 +10,48 @@ class Calculator extends Component{
             operator: "suma",
         }
     };
-    setValue1 = e =>{
-        const {target: {value}} = e;
-        this.setState({
-            input1: value,
-        })
-        switch(this.operator){
-            case "suma": this.setState({
-                res: parseInt(this.state.input1) + parseInt(this.state.input2),
-            });
-            break;
-            case "resta": this.setState({
-                res: this.state.input1 - this.state.input2,
-            });
-            break;
-            case "mult": this.setState({
-                res: this.state.input1 * this.state.input2,
-            });
-            break;
-            case "divi": this.setState({
-                res: this.state.input1 / this.state.input2,
-            });
-            break;
-        }
-    };
-    setValue2 = e =>{
-        const {target: {value}} = e;
-        this.setState({
-            input2: value,
-        })
-        switch(this.operator){
-            case "suma": this.setState({
-                res: parseInt(this.state.input1) + parseInt(this.state.input2),
-            });
-            break;
-            case "resta": this.setState({
-                res: this.state.input1 - this.state.input2,
-            });
-            break;
-            case "mult": this.setState({
-                res: this.state.input1 * this.state.input2,
-            });
-            break;
-            case "divi": this.setState({
-                res: this.state.input1 / this.state.input2,
-            });
-            break;
-        }
-    };
+
     handleOnChange = e => {
+        const {target: {value, name, type}} = e;
+        const val = type === 'text' ? Number(value):value;
+        
+        this.setState({
+            [name]: val,
+        });
+    };
+
+    handleResult = e => {
+        const {number1, number2, operator} = this.state;
+
+        this.setState({
+            res: calculateResult(number1, number2, operator)
+        })
+    };
+
+    handleSelect = e => {
         const {target: {value}} = e;
         this.setState({
-            operator: value,
-        });
-        switch(value){
-            case "suma": this.setState({
-                res: parseInt(this.state.input1) + parseInt(this.state.input2),
-            });
-            break;
-            case "resta": this.setState({
-                res: this.state.input1 - this.state.input2,
-            });
-            break;
-            case "mult": this.setState({
-                res: this.state.input1 * this.state.input2,
-            });
-            break;
-            case "divi": this.setState({
-                res: this.state.input1 / this.state.input2,
-            });
-            break;
-        }
-    };
+            operator: value
+        })
+    }
     render(){
         return(
             <div className='back'>
                 <div className='calculator'>
-                    <input type="number" onChange={this.setValue1} className='text'/>
-                    <select onChange={this.handleOnChange} className='select'>
+                    <input name="number1" type="text" onChange={this.handleOnChange} className='text'/>
+                    <select onChange={this.handleSelect} className='select'>
                         <option value="suma">+</option>
                         <option value="resta">-</option>
                         <option value="mult">*</option>
                         <option value="divi">/</option>
                     </select>
-                    <input type="number" onChange={this.setValue2} className='text'/>
+                    <input name="number2" type="text" onChange={this.handleOnChange} className='text'/>
                 </div>
                 <div>
                     <h2>Result</h2>
                     <div className='box'>
-                        <h2 className='resultado'>{this.state.res}</h2>
+                        <button onClick={this.handleResult}>Calcular</button>
+                        <h2 className='resultado'>{this.state.res.toFixed(2)}</h2>
                     </div>
                 </div>
             </div>
@@ -106,4 +59,16 @@ class Calculator extends Component{
     }
 }
 
+function calculateResult(num1, num2, op) {
+    switch(op){
+        case "suma":
+            return num1 + num2;
+        case "resta": 
+            return num1 - num2;
+        case "mult":
+            return num1*num2;
+        case "divi":
+            return num1/num2;
+    }
+}
 export default Calculator;
